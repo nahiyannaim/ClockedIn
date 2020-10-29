@@ -1,0 +1,52 @@
+body {
+  margin: 0;
+}
+
+.navbar {
+  float: left;
+  width: 20%;
+}
+
+.navbar > ul {
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  width: 20%;
+  background-color: #ececec;
+  position: fixed;
+  height: 100%;
+  overflow: hidden;
+}
+
+li a {
+  font-size: 2rem;
+  color: black;
+  display: block;
+  text-decoration: none;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
+li a.active {
+  background-color: lightskyblue;
+  color: white;
+}
+
+li a:hover:not(.active) {
+  color: lightskyblue;
+}
+
+.container {
+  margin-left: 20%;
+  text-align: center;
+  border: 2px solid red;
+}
+
+footer {
+  font-size: 1.2rem;
+  text-align: center;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
