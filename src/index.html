@@ -7,7 +7,7 @@
     <title>Clocked In</title>
   </head>
 
-  <body>
+  <body onload="getCurrList()">
     <div class="navbar">
       <ul>
         <li><a class="active" href="index.html">Home</a></li>
@@ -23,6 +23,7 @@
     </div>
 
     <footer>
+      <button onclick="printLatest()">Print</button>
       <p>&copy; ClockedIn</p>
     </footer>
 
