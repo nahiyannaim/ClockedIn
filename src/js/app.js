@@ -17,21 +17,23 @@ const removeFromStorage = (date) => {
 const addEntry = () => {
   const li = document.createElement("li");
   const inputValDate = document.getElementById("date-input").value;
+  const inputValStart = document.getElementById("start-input").value;
+  const inputValEnd = document.getElementById("end-input").value;
   const text = document.createTextNode(inputValDate);
   const span = document.createElement("span");
   const remove = document.getElementsByClassName("remove-btn");
 
   li.appendChild(text);
 
-  if (inputValDate === "") {
+  if (inputValDate === "" || inputValStart === "" || inputValEnd === "") {
     console.log("Please fill in the fields");
   } else {
     document.getElementById("list").appendChild(li);
     span.className = "remove-btn";
     span.innerHTML = "X";
     li.appendChild(span);
-    document.getElementById("date-input").value = "";
-    addToStorage(inputValDate, "start", "end", []);
+    resetFields();
+    addToStorage(inputValDate, inputValStart, inputValEnd, []);
   }
 
   for (let i = 0; i < remove.length; i++) {
@@ -55,7 +57,7 @@ const getCurrList = () => {
     span.className = "remove-btn";
     span.innerHTML = "X";
     li.appendChild(span);
-    document.getElementById("date-input").value = "";
+    resetFields();
 
     for (let i = 0; i < remove.length; i++) {
       remove[i].onclick = function () {
@@ -68,4 +70,10 @@ const getCurrList = () => {
 
 const printLatest = () => {
   console.log(localStorage);
+};
+
+const resetFields = () => {
+  document.getElementById("date-input").value = "";
+  document.getElementById("start-input").value = "";
+  document.getElementById("end-input").value = "";
 };
