@@ -32,10 +32,17 @@ const removeFromStorage = (date) => {
 const addEntry = () => {
   const inputValDate = document.getElementById("date-input").value;
   const inputValTask = document.getElementById("task-input").value;
+  const inputValProject = document.getElementById("project-input").value;
   const inputValStart = document.getElementById("start-input").value;
   const inputValEnd = document.getElementById("end-input").value;
 
-  if (inputValDate && inputValTask && inputValStart && inputValEnd) {
+  if (
+    inputValDate &&
+    inputValTask &&
+    inputValProject &&
+    inputValStart &&
+    inputValEnd
+  ) {
     let taskList = [];
     let item = localStorage.getItem(inputValDate);
 
@@ -47,6 +54,7 @@ const addEntry = () => {
 
     taskList.push({
       task: inputValTask,
+      project: inputValProject,
       start: inputValStart,
       end: inputValEnd,
     });
@@ -73,8 +81,9 @@ const populateList = (date, taskList, initialRun) => {
   let taskHtml = `<div class="date"> ${date} </div>`;
   taskList.forEach((item) => {
     taskHtml += `<p class="task"> ${item.task} </p> 
-            <span class="start-time">Start: ${item.start} </span> 
-            <span class="end-time">End: ${item.end} </span>`;
+                  <p class="project"> ${item.project} </p>
+                  <span class="start-time">Start: ${item.start} </span> 
+                  <span class="end-time">End: ${item.end} </span>`;
   });
   taskHtml += `<button class="remove-entry-btn"> Remove Entry </button>`;
   div.innerHTML = taskHtml;
@@ -94,6 +103,7 @@ const printLatest = () => {
 const resetFields = () => {
   document.getElementById("date-input").value = "";
   document.getElementById("task-input").value = "";
+  document.getElementById("project-input").value = "";
   document.getElementById("start-input").value = "";
   document.getElementById("end-input").value = "";
 };
