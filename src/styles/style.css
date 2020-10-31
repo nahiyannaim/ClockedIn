@@ -1,3 +1,7 @@
+:root {
+  --green: rgba(30, 175, 30, 0.576);
+}
+
 body {
   margin: 0;
 }
@@ -64,12 +68,12 @@ li a {
 }
 
 li a.active {
-  background-color: rgba(30, 175, 30, 0.576);
+  background-color: var(--green);
   color: white;
 }
 
 li a:hover:not(.active) {
-  color: rgba(30, 175, 30, 0.576);
+  color: var(--green);
 }
 
 .container {
