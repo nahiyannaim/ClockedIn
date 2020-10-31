@@ -28,7 +28,7 @@ const start = () => {
         event.target.classList.contains("remove-entry-btn") ||
         event.target.parentElement.classList.contains("remove-entry-btn")
       ) {
-        removeEntry(event.target.closest("li").id);
+        removeEntry(event.target.closest("div").id);
       }
     });
   }
@@ -56,18 +56,10 @@ const removeEntry = (date) => {
 };
 
 const populateList = (date) => {
-  //To-do: replace li with div
-  const li = document.createElement("li");
-  li.setAttribute("id", date);
-  li.innerHTML = `
-    <div class="item">
-    ${date}
-    </div>
-    <button class="remove-entry-btn">
-      X
-    </button>
-  `;
-  ul.appendChild(li);
+  const div = document.createElement("div");
+  div.setAttribute("id", date);
+  div.innerHTML = `<div class="item"> ${date} </div> <button class="remove-entry-btn"> Remove Entry </button>`;
+  ul.appendChild(div);
 };
 
 const printLatest = () => {

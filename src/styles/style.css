@@ -18,6 +18,22 @@ body {
   overflow: hidden;
 }
 
+ul > div {
+  border: 2px solid greenyellow;
+}
+
+.item {
+  border: 2px solid purple;
+}
+
+.remove-entry-btn {
+  font-size: 1rem;
+  color: white;
+  background-color: rgb(182, 0, 0);
+  outline: none;
+  cursor: pointer;
+}
+
 li a {
   font-size: 2rem;
   color: black;
