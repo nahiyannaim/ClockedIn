@@ -1,12 +1,12 @@
 const ul = document.getElementById("entry-list");
 
-const addToStorage = (date, startTime, endTime, subEntries) => {
+const addToStorage = (date, start, end, subEntries) => {
   localStorage.setItem(
     date,
     JSON.stringify({
-      start: startTime,
-      end: endTime,
-      "sub-entries": subEntries,
+      start: start,
+      end: end,
+      subEntries: subEntries,
     })
   );
 };
@@ -17,8 +17,9 @@ const removeFromStorage = (date) => {
 
 const start = () => {
   // Retrieve initial state of entry list from storage and display it
-  Object.keys(localStorage).forEach((date) => {
-    populateList(date);
+  Object.entries(localStorage).forEach((entry) => {
+    const val = JSON.parse(entry[1]);
+    populateList(entry[0], val.start, val.end, val.subEntries);
   });
 
   // Event Listener for delete buttons for entries
@@ -39,11 +40,12 @@ const addEntry = () => {
   const inputValDate = document.getElementById("date-input").value;
   const inputValStart = document.getElementById("start-input").value;
   const inputValEnd = document.getElementById("end-input").value;
+  const inputValSubEntries = [];
 
   if (inputValDate && inputValStart && inputValEnd) {
-    populateList(inputValDate); // To-do: check if date already exists in storage
+    populateList(inputValDate, inputValStart, inputValEnd, inputValSubEntries); // To-do: check if date already exists in storage
+    addToStorage(inputValDate, inputValStart, inputValEnd, inputValSubEntries);
     resetFields();
-    addToStorage(inputValDate, inputValStart, inputValEnd, []);
   } else {
     console.log("Please fill out all input fields.");
   }
@@ -55,10 +57,13 @@ const removeEntry = (date) => {
   removeFromStorage(date);
 };
 
-const populateList = (date) => {
+const populateList = (date, start, end, subEntries) => {
   const div = document.createElement("div");
   div.setAttribute("id", date);
-  div.innerHTML = `<div class="item"> ${date} </div> <button class="remove-entry-btn"> Remove Entry </button>`;
+  div.innerHTML = `<div class="date"> ${date} </div> 
+                    <span class="start-time">Start: ${start} </span> 
+                    <span class="end-time">End: ${end} </span>
+                    <button class="remove-entry-btn"> Remove Entry </button>`;
   ul.appendChild(div);
 };
 
