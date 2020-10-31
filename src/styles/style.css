@@ -107,3 +107,16 @@ footer {
   bottom: 0;
   width: 100%;
 }
+
+@media (max-width: 768px) {
+  li.brand {
+    padding-top: 0.75rem;
+    padding-bottom: 0.5rem;
+    font-size: 1rem;
+  }
+  li a {
+    font-size: 1rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+}
