@@ -1,3 +1,5 @@
+const ul = document.getElementById("entry-list");
+
 const addToStorage = (date, startTime, endTime, subEntries) => {
   localStorage.setItem(
     date,
@@ -13,59 +15,59 @@ const removeFromStorage = (date) => {
   localStorage.removeItem(date);
 };
 
-// Add a new entry on click
-const addEntry = () => {
-  const li = document.createElement("li");
-  const inputValDate = document.getElementById("date-input").value;
-  const inputValStart = document.getElementById("start-input").value;
-  const inputValEnd = document.getElementById("end-input").value;
-  const text = document.createTextNode(inputValDate);
-  const span = document.createElement("span");
-  const remove = document.getElementsByClassName("remove-btn");
+const start = () => {
+  // Retrieve initial state of entry list from storage and display it
+  Object.keys(localStorage).forEach((date) => {
+    populateList(date);
+  });
 
-  li.appendChild(text);
-
-  if (inputValDate === "" || inputValStart === "" || inputValEnd === "") {
-    console.log("Please fill in the fields");
-  } else {
-    document.getElementById("list").appendChild(li);
-    span.className = "remove-btn";
-    span.innerHTML = "X";
-    li.appendChild(span);
-    resetFields();
-    addToStorage(inputValDate, inputValStart, inputValEnd, []);
-  }
-
-  for (let i = 0; i < remove.length; i++) {
-    remove[i].onclick = function () {
-      this.parentElement.style.display = "none";
-      removeFromStorage(this.parentElement.innerText.replace("X", ""));
-    };
+  // Event Listener for delete buttons for entries
+  if (ul) {
+    ul.addEventListener("click", (event) => {
+      if (
+        event.target.classList.contains("remove-entry-btn") ||
+        event.target.parentElement.classList.contains("remove-entry-btn")
+      ) {
+        removeEntry(event.target.closest("li").id);
+      }
+    });
   }
 };
 
-// Retrieve current state of entry list from storage and display it
-const getCurrList = () => {
-  Object.keys(localStorage).forEach((date) => {
-    const li = document.createElement("li");
-    const text = document.createTextNode(date);
-    const span = document.createElement("span");
-    const remove = document.getElementsByClassName("remove-btn");
+// Add a new entry on click
+const addEntry = () => {
+  const inputValDate = document.getElementById("date-input").value;
+  const inputValStart = document.getElementById("start-input").value;
+  const inputValEnd = document.getElementById("end-input").value;
 
-    li.appendChild(text);
-    document.getElementById("list").appendChild(li);
-    span.className = "remove-btn";
-    span.innerHTML = "X";
-    li.appendChild(span);
+  if (inputValDate && inputValStart && inputValEnd) {
+    populateList(inputValDate); // To-do: check if date already exists in storage
     resetFields();
+    addToStorage(inputValDate, inputValStart, inputValEnd, []);
+  } else {
+    console.log("Please fill out all input fields.");
+  }
+};
 
-    for (let i = 0; i < remove.length; i++) {
-      remove[i].onclick = function () {
-        this.parentElement.style.display = "none";
-        removeFromStorage(this.parentElement.innerText.replace("X", ""));
-      };
-    }
-  });
+// Remove an entry on click
+const removeEntry = (date) => {
+  document.getElementById(date).remove();
+  removeFromStorage(date);
+};
+
+const populateList = (date) => {
+  //To-do: replace li with div
+  const li = document.createElement("li");
+  li.setAttribute("id", date);
+  li.innerHTML = `
+    <div class="item">
+    ${date}
+    </div>
+    <button class="remove-entry-btn">
+      X
+    </button>
+  `;
+  ul.appendChild(li);
 };
 
 const printLatest = () => {

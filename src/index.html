@@ -7,7 +7,7 @@
     <title>Clocked In</title>
   </head>
 
-  <body onload="getCurrList()">
+  <body onload="start()">
     <div class="navbar">
       <ul>
         <li><a class="active" href="index.html">Home</a></li>
@@ -25,8 +25,8 @@
       <label>End Time:</label>
       <input type="time" id="end-input" />
 
-      <button onclick="addEntry()" class="add-btn">Add Entry</button>
-      <ul id="list"></ul>
+      <button onclick="addEntry()" class="add-entry-btn">Add Entry</button>
+      <ul id="entry-list"></ul>
     </div>
 
     <footer>
