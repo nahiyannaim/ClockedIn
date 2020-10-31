@@ -30,7 +30,7 @@ const removeFromStorage = (date) => {
 
 // Add a new entry on click
 const addEntry = () => {
-  const inputValDate = document.getElementById("date-input").value;
+  let inputValDate = document.getElementById("date-input").value;
   const inputValTask = document.getElementById("task-input").value;
   const inputValProject = document.getElementById("project-input").value;
   const inputValStart = document.getElementById("start-input").value;
@@ -43,6 +43,7 @@ const addEntry = () => {
     inputValStart &&
     inputValEnd
   ) {
+    inputValDate = convertDate(inputValDate);
     let taskList = [];
     let item = localStorage.getItem(inputValDate);
 
@@ -106,4 +107,27 @@ const resetFields = () => {
   document.getElementById("project-input").value = "";
   document.getElementById("start-input").value = "";
   document.getElementById("end-input").value = "";
+};
+
+const convertDate = (date) => {
+  const months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+  const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  const result = new Date(date);
+
+  return `${days[result.getUTCDay()]}, ${result.getUTCDate()} ${
+    months[result.getUTCMonth()]
+  } ${result.getUTCFullYear()}`;
 };
