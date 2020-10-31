@@ -1,5 +1,6 @@
 :root {
   --green: rgba(30, 175, 30, 0.576);
+  --dark-green: rgba(23, 163, 23, 0.733);
 }
 
 body {
@@ -21,10 +22,11 @@ input {
   margin: 0;
   padding: 0;
   width: 20%;
-  background-color: #ececec;
+
   position: fixed;
   height: 100%;
   overflow: hidden;
+  background-color: #f1f1f17e;
 }
 
 ul {
@@ -33,6 +35,45 @@ ul {
 
 ul > div {
   border: 2px solid greenyellow;
+}
+
+li.brand {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  font-size: 2rem;
+  background-color: white;
+  color: var(--dark-green);
+  font-weight: 100;
+}
+
+li a {
+  font-size: 1.5rem;
+  color: black;
+  display: block;
+  text-decoration: none;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
+li a.active {
+  background-color: var(--green);
+  color: white;
+  border-left: 0.5rem solid var(--dark-green);
+}
+
+li a:hover:not(.active) {
+  color: var(--green);
+}
+
+.container {
+  margin-left: 20%;
+  text-align: center;
+  border: 2px solid red;
+}
+
+.container h1 {
+  color: var(--dark-green);
+  font-weight: 100;
 }
 
 .date {
@@ -56,30 +97,6 @@ ul > div {
   background-color: rgb(182, 0, 0);
   outline: none;
   cursor: pointer;
-}
-
-li a {
-  font-size: 2rem;
-  color: black;
-  display: block;
-  text-decoration: none;
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
-}
-
-li a.active {
-  background-color: var(--green);
-  color: white;
-}
-
-li a:hover:not(.active) {
-  color: var(--green);
-}
-
-.container {
-  margin-left: 20%;
-  text-align: center;
-  border: 2px solid red;
 }
 
 footer {
