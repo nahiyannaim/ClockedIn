@@ -18,6 +18,10 @@ body {
   overflow: hidden;
 }
 
+ul {
+  padding-inline-start: 0rem;
+}
+
 ul > div {
   border: 2px solid greenyellow;
 }
