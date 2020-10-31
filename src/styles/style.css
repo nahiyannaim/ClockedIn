@@ -5,6 +5,7 @@
 
 body {
   margin: 0;
+  background-color: #f1f1f17e;
 }
 
 body,
@@ -15,6 +16,7 @@ input {
 .navbar {
   float: left;
   width: 20%;
+  background-color: white;
 }
 
 .navbar > ul {
@@ -22,11 +24,10 @@ input {
   margin: 0;
   padding: 0;
   width: 20%;
-
   position: fixed;
   height: 100%;
   overflow: hidden;
-  background-color: #f1f1f17e;
+  background-color: white;
 }
 
 ul {
@@ -34,14 +35,16 @@ ul {
 }
 
 ul > div {
-  border: 2px solid greenyellow;
+  margin-bottom: 2rem;
+  border: 1px solid rgba(200, 200, 200, 1);
+  box-shadow: 0 4px 6px 4px rgba(161, 161, 161, 0.4);
+  background-color: white;
 }
 
 li.brand {
   padding-top: 1rem;
   padding-bottom: 1rem;
   font-size: 2rem;
-  background-color: white;
   color: var(--dark-green);
   font-weight: 100;
 }
@@ -66,18 +69,25 @@ li a:hover:not(.active) {
 }
 
 .container {
+  padding-left: 2rem;
+  padding-right: 2rem;
   margin-left: 20%;
   text-align: center;
-  border: 2px solid red;
 }
 
 .container h1 {
   color: var(--dark-green);
   font-weight: 100;
+  padding-top: 1rem;
+  margin-top: 0;
 }
 
 .date {
-  /* border: 2px solid rgb(50, 47, 255); */
+  background-color: var(--green);
+  color: white;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  font-size: 1.5rem;
 }
 .task {
   /* border: 2px solid rgb(255, 47, 238); */
