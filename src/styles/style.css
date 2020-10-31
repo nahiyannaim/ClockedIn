@@ -2,6 +2,11 @@ body {
   margin: 0;
 }
 
+body,
+input {
+  font-family: Arial, Helvetica, Verdana, sans-serif;
+}
+
 .navbar {
   float: left;
   width: 20%;
@@ -59,12 +64,12 @@ li a {
 }
 
 li a.active {
-  background-color: lightskyblue;
+  background-color: rgba(30, 175, 30, 0.576);
   color: white;
 }
 
 li a:hover:not(.active) {
-  color: lightskyblue;
+  color: rgba(30, 175, 30, 0.576);
 }
 
 .container {
