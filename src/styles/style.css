@@ -26,8 +26,19 @@ ul > div {
   border: 2px solid greenyellow;
 }
 
-.item {
-  border: 2px solid purple;
+.date {
+  border: 2px solid rgb(50, 47, 255);
+}
+.task {
+  border: 2px solid rgb(255, 47, 238);
+}
+
+.start-time {
+  border: 2px solid rgb(255, 147, 47);
+}
+
+.end-time {
+  border: 2px solid rgb(47, 248, 255);
 }
 
 .remove-entry-btn {
