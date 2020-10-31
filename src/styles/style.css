@@ -109,15 +109,6 @@ li a:hover:not(.active) {
   cursor: pointer;
 }
 
-footer {
-  font-size: 1.2rem;
-  text-align: center;
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-}
-
 @media (max-width: 768px) {
   li.brand {
     padding-top: 0.75rem;
