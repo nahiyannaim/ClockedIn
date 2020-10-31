@@ -4,8 +4,7 @@ const start = () => {
   // Retrieve initial state of entry list from storage and display it
   Object.entries(localStorage).forEach((entry) => {
     const taskList = JSON.parse(entry[1]).taskList;
-
-    populateList(entry[0], taskList);
+    populateList(entry[0], taskList, true);
   });
 
   // Event Listener for delete buttons for entries
@@ -21,17 +20,7 @@ const start = () => {
   }
 };
 
-const addToStorage = (date, newTask) => {
-  let item = localStorage.getItem(date);
-  let taskList = [];
-
-  if (item) {
-    // This date entry already exists
-    item = JSON.parse(item);
-    taskList = item.taskList;
-  }
-
-  taskList.push(newTask);
+const addToStorage = (date, taskList) => {
   localStorage.setItem(date, JSON.stringify({ taskList }));
 };
 
@@ -48,18 +37,25 @@ const addEntry = () => {
 
   if (inputValDate && inputValTask && inputValStart && inputValEnd) {
     let taskList = [];
-    let newTask = {
+    let item = localStorage.getItem(inputValDate);
+
+    // This date entry already exists so get the curr taskList
+    if (item) {
+      item = JSON.parse(item);
+      taskList = item.taskList;
+    }
+
+    taskList.push({
       task: inputValTask,
       start: inputValStart,
       end: inputValEnd,
-    };
-    taskList.push(newTask);
+    });
 
-    populateList(inputValDate, taskList); // To-do: check if date already exists in storage
-    addToStorage(inputValDate, newTask);
+    populateList(inputValDate, taskList, false);
+    addToStorage(inputValDate, taskList);
     resetFields();
   } else {
-    console.log("Please fill out all input fields.");
+    alert("Please fill out all input fields.");
   }
 };
 
@@ -69,21 +65,26 @@ const removeEntry = (date) => {
   removeFromStorage(date);
 };
 
-const populateList = (date, taskList) => {
+const populateList = (date, taskList, initialRun) => {
+  const staleEntry = initialRun ? false : document.getElementById(date);
   const div = document.createElement("div");
   div.setAttribute("id", date);
-  let taskHtml = `<div class="date"> ${date} </div>`;
 
+  let taskHtml = `<div class="date"> ${date} </div>`;
   taskList.forEach((item) => {
     taskHtml += `<p class="task"> ${item.task} </p> 
             <span class="start-time">Start: ${item.start} </span> 
             <span class="end-time">End: ${item.end} </span>`;
   });
-
   taskHtml += `<button class="remove-entry-btn"> Remove Entry </button>`;
-
   div.innerHTML = taskHtml;
-  ul.appendChild(div);
+
+  // If entry already exists replace the old div with new updated entry
+  if (staleEntry) {
+    staleEntry.replaceWith(div);
+  } else {
+    ul.appendChild(div);
+  }
 };
 
 const printLatest = () => {
