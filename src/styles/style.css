@@ -27,18 +27,18 @@ ul > div {
 }
 
 .date {
-  border: 2px solid rgb(50, 47, 255);
+  /* border: 2px solid rgb(50, 47, 255); */
 }
 .task {
-  border: 2px solid rgb(255, 47, 238);
+  /* border: 2px solid rgb(255, 47, 238); */
 }
 
 .start-time {
-  border: 2px solid rgb(255, 147, 47);
+  /* border: 2px solid rgb(255, 147, 47); */
 }
 
 .end-time {
-  border: 2px solid rgb(47, 248, 255);
+  /* border: 2px solid rgb(47, 248, 255); */
 }
 
 .remove-entry-btn {

@@ -3,8 +3,9 @@ const ul = document.getElementById("entry-list");
 const start = () => {
   // Retrieve initial state of entry list from storage and display it
   Object.entries(localStorage).forEach((entry) => {
-    const val = JSON.parse(entry[1]);
-    populateList(entry[0], val.task, val.start, val.end, val.subEntries);
+    const taskList = JSON.parse(entry[1]).taskList;
+
+    populateList(entry[0], taskList);
   });
 
   // Event Listener for delete buttons for entries
@@ -20,16 +21,18 @@ const start = () => {
   }
 };
 
-const addToStorage = (date, task, start, end, subEntries) => {
-  localStorage.setItem(
-    date,
-    JSON.stringify({
-      task: task,
-      start: start,
-      end: end,
-      subEntries: subEntries,
-    })
-  );
+const addToStorage = (date, newTask) => {
+  let item = localStorage.getItem(date);
+  let taskList = [];
+
+  if (item) {
+    // This date entry already exists
+    item = JSON.parse(item);
+    taskList = item.taskList;
+  }
+
+  taskList.push(newTask);
+  localStorage.setItem(date, JSON.stringify({ taskList }));
 };
 
 const removeFromStorage = (date) => {
@@ -42,23 +45,18 @@ const addEntry = () => {
   const inputValTask = document.getElementById("task-input").value;
   const inputValStart = document.getElementById("start-input").value;
   const inputValEnd = document.getElementById("end-input").value;
-  const inputValSubEntries = [];
 
   if (inputValDate && inputValTask && inputValStart && inputValEnd) {
-    populateList(
-      inputValDate,
-      inputValTask,
-      inputValStart,
-      inputValEnd,
-      inputValSubEntries
-    ); // To-do: check if date already exists in storage
-    addToStorage(
-      inputValDate,
-      inputValTask,
-      inputValStart,
-      inputValEnd,
-      inputValSubEntries
-    );
+    let taskList = [];
+    let newTask = {
+      task: inputValTask,
+      start: inputValStart,
+      end: inputValEnd,
+    };
+    taskList.push(newTask);
+
+    populateList(inputValDate, taskList); // To-do: check if date already exists in storage
+    addToStorage(inputValDate, newTask);
     resetFields();
   } else {
     console.log("Please fill out all input fields.");
@@ -71,14 +69,20 @@ const removeEntry = (date) => {
   removeFromStorage(date);
 };
 
-const populateList = (date, task, start, end, subEntries) => {
+const populateList = (date, taskList) => {
   const div = document.createElement("div");
   div.setAttribute("id", date);
-  div.innerHTML = `<div class="date"> ${date} </div> 
-                    <p class="task"> ${task} </p> 
-                    <span class="start-time">Start: ${start} </span> 
-                    <span class="end-time">End: ${end} </span>
-                    <button class="remove-entry-btn"> Remove Entry </button>`;
+  let taskHtml = `<div class="date"> ${date} </div>`;
+
+  taskList.forEach((item) => {
+    taskHtml += `<p class="task"> ${item.task} </p> 
+            <span class="start-time">Start: ${item.start} </span> 
+            <span class="end-time">End: ${item.end} </span>`;
+  });
+
+  taskHtml += `<button class="remove-entry-btn"> Remove Entry </button>`;
+
+  div.innerHTML = taskHtml;
   ul.appendChild(div);
 };
 
