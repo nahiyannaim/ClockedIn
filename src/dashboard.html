@@ -5,9 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="styles/style.css" />
     <title>Clocked In</title>
+    <script src="https://d3js.org/d3.v4.js"></script>
   </head>
 
-  <body>
+  <body onload="start()">
     <div class="navbar">
       <ul>
         <li class="brand">ClockedIn</li>
@@ -18,6 +19,7 @@
 
     <div class="container">
       <h1>Dashboard Page</h1>
+      <div id="bar-chart"></div>
       <button onclick="printLatest()">Print</button>
     </div>
 
