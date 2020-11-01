@@ -64,7 +64,22 @@ const addEntry = () => {
     addToStorage(inputValDate, taskList);
     resetFields();
   } else {
-    alert("Please fill out all input fields.");
+    const modal = document.getElementById("alert-modal");
+    const span = document.getElementById("modal-close");
+
+    modal.style.display = "block";
+
+    // Close the modal when clicked on X
+    span.onclick = function () {
+      modal.style.display = "none";
+    };
+
+    // Close the modal when user clicks outside the modal
+    window.onclick = function (event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    };
   }
 };
 
