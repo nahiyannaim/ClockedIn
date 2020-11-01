@@ -4,11 +4,10 @@ const subgroups = ["A", "B", "C", "D"];
 
 const printLatest = () => {
   console.log(localStorage);
-  console.log(getChartData());
 };
 
 const start = () => {
-  displayBarChart(getChartData());
+  displayBarChart(getBarChartData());
   displayDonutChart({
     A: getTotalProjectHours("Project A"),
     B: getTotalProjectHours("Project B"),
@@ -17,7 +16,7 @@ const start = () => {
   });
 };
 
-const getChartData = () => {
+const getBarChartData = () => {
   let data = [];
   Object.entries(localStorage).forEach((entry) => {
     data.push({
@@ -186,7 +185,7 @@ const displayDonutChart = (data) => {
     .innerRadius(radius * 0.9)
     .outerRadius(radius * 0.9);
 
-  // Build the pie chart, each part of the pie is a path that is built using the arc function.
+  // Build the pie chart, each part of the pie is a path that is built using the arc function
   svg
     .selectAll("allSlices")
     .data(data_ready)
