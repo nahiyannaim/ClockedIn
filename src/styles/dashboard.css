@@ -1,0 +1,15 @@
+.chart-area {
+  margin-bottom: 3rem;
+  border: 1px solid rgba(200, 200, 200, 1);
+  box-shadow: 0 4px 6px 4px rgba(161, 161, 161, 0.4);
+  background-color: white;
+}
+
+.container h2 {
+  margin-top: 0;
+  background-color: var(--green);
+  color: white;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  font-weight: 100;
+}

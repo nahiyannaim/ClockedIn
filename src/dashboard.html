@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="styles/style.css" />
+    <link rel="stylesheet" href="styles/dashboard.css" />
     <title>Clocked In</title>
     <script src="https://d3js.org/d3.v4.js"></script>
   </head>
@@ -20,8 +21,9 @@
     <div class="container">
       <h1>Dashboard Page</h1>
 
-      <h2>Hours by Date</h2>
-      <div id="bar-chart"></div>
+      <div id="bar-chart" class="chart-area">
+        <h2>Hours by Date</h2>
+      </div>
 
       <!-- <div class="chart-legend">
         <p class="a">Project A</p>
@@ -30,8 +32,9 @@
         <p class="d">Project D</p>
       </div> -->
 
-      <h2>Total Hours by Project</h2>
-      <div id="donut-chart"></div>
+      <div id="donut-chart" class="chart-area">
+        <h2>Total Hours by Project</h2>
+      </div>
 
       <button onclick="printLatest()">Print</button>
     </div>
