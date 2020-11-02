@@ -96,10 +96,12 @@ const populateList = (date, taskList, initialRun) => {
 
   let taskHtml = `<div class="date"> ${date} </div>`;
   taskList.forEach((item) => {
-    taskHtml += `<p class="task"> ${item.task} </p> 
+    taskHtml += `<div class="task-item">
+                  <p class="task"> ${item.task} </p> 
                   <p class="project"> ${item.project} </p>
                   <span class="start-time">Start: ${item.start} </span> 
-                  <span class="end-time">End: ${item.end} </span>`;
+                  <span class="end-time">End: ${item.end} </span>
+                </div>`;
   });
   taskHtml += `<button class="remove-entry-btn"> Remove Entry </button>`;
   div.innerHTML = taskHtml;
