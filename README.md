@@ -2,6 +2,8 @@
 
 _Keep track of how long you spend on tasks for different projects by adding and removing time entries for specific dates._
 
+<img src="./src/images/screenshot.png" width="800"/>
+
 ## Time Tracking
 
 - Pick a project, date and time and add an entry
