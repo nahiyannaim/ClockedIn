@@ -74,19 +74,18 @@ const getTotalProjectHours = (project) => {
 };
 
 const displayBarChart = (data) => {
-  // Set the dimensions and margins of the graph
-  let margin = { top: 10, right: 30, bottom: 20, left: 50 },
-    width = 760 - margin.left - margin.right,
-    height = 400 - margin.top - margin.bottom;
-
-  // Append the svg object to the body of the page
-  let svg = d3
+  // Append the svg object to the div
+  const svg = d3
     .select("#bar-chart")
     .append("svg")
-    .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom)
+    .attr("viewBox", "-125 -50 800 400");
+
+  const margin = { top: 0, bottom: 20, left: 30, right: 20 };
+  const chart = svg
     .append("g")
-    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+    .attr("transform", `translate(${margin.left},0)`);
+  const width = 600 - margin.left - margin.right - 1.5 * 2;
+  const height = 300 - margin.top - margin.bottom;
 
   // List of groups on the X axis
   let groups = d3
@@ -145,9 +144,9 @@ const displayBarChart = (data) => {
 
 const displayDonutChart = (data) => {
   // Dimensions and margins of the graph
-  let width = 750;
-  height = 450;
-  margin = 40;
+  const width = 550;
+  const height = 250;
+  const margin = 40;
 
   // The radius of the pieplot is half the width or half the height of smallest one
   let radius = Math.min(width, height) / 2 - margin;
@@ -156,8 +155,7 @@ const displayDonutChart = (data) => {
   let svg = d3
     .select("#donut-chart")
     .append("svg")
-    .attr("width", width)
-    .attr("height", height)
+    .attr("viewBox", `0 0 ${width} ${height}`)
     .append("g")
     .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
 
