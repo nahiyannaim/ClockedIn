@@ -88,17 +88,27 @@ li a:hover:not(.active) {
   color: white;
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
+  padding-left: 2rem;
   font-size: 1.5rem;
+  text-align: left;
 }
 
 .task-item {
   border-bottom: 1px solid #c8c8c8;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  text-align: left;
 }
 
 .task {
+  border-right: 0.1rem solid #c8c8c8;
+  padding-right: 1rem;
 }
 
 .project {
+  padding-left: 1rem;
 }
 
 .project-a {
@@ -114,6 +124,12 @@ li a:hover:not(.active) {
   color: #ffa500;
 }
 
+.times {
+  letter-spacing: 0.1rem;
+  float: right;
+  color: #6a6a6a;
+}
+
 .start-time {
 }
 
@@ -121,11 +137,13 @@ li a:hover:not(.active) {
 }
 
 .remove-entry-btn {
-  font-size: 1rem;
-  color: white;
-  background-color: #b60000;
+  font-size: 2rem;
   outline: none;
   cursor: pointer;
+  border: none;
+  width: 100%;
+  color: red;
+  background-color: white;
 }
 
 .modal {

@@ -97,16 +97,18 @@ const populateList = (date, taskList, initialRun) => {
   let taskHtml = `<div class="date"> ${date} </div>`;
   taskList.forEach((item) => {
     taskHtml += `<div class="task-item">
-                  <p class="task"> ${item.task} </p> 
-                  <p class="project ${item.project
+                  <span class="task"> ${item.task} </span> 
+                  <span class="project ${item.project
                     .toString()
                     .toLowerCase()
-                    .replace(" ", "-")}"> ${item.project} </p>
-                  <span class="start-time">Start: ${item.start} </span> 
-                  <span class="end-time">End: ${item.end} </span>
+                    .replace(" ", "-")}"> ${item.project} </span>
+                  <div class="times">
+                    <span class="start-time"> ${item.start} </span> -
+                    <span class="end-time"> ${item.end} </span>
+                  </div>
                 </div>`;
   });
-  taskHtml += `<button class="remove-entry-btn"> Remove Entry </button>`;
+  taskHtml += `<button class="remove-entry-btn"> &minus; </button>`;
   div.innerHTML = taskHtml;
 
   // If entry already exists replace the old div with new updated entry
