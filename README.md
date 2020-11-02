@@ -1,17 +1,18 @@
 # ClockedIn
 
-_Keep track of how much time you spend on projects by adding and removing time entries for specific dates. Use the dashboard to visualize different reporting breakdowns._
+_Keep track of how long you spend on tasks for different projects by adding and removing time entries for specific dates._
 
 ## Time Tracking
 
-- Pick a date and add an entry
-- Remove an entry using the X button
+- Pick a project, date and time and add an entry
+- Remove an entry using the - button at the bottom
 
 ## Reporting
 
-- Visualize the time breakdowns for each project by navigating to the Dashboard section
+- Use the dashboard to visualize different reporting breakdowns
+- Visualize the time breakdowns for each project on each day and also the total hours spent
 
-## Setup
+## Setup & Running
 
 - Clone or download repo
 - Open `index.html` file in your browser and start interacting with the app
