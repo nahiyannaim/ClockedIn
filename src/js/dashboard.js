@@ -1,4 +1,4 @@
-const chartProjectColours = ["#e41a1c", "#377eb8", "#4daf4a", "yellow"];
+const chartProjectColours = ["#ff0000", "#ff99aa", "#5ac0ff", "#ffa500"];
 
 const subgroups = ["A", "B", "C", "D"];
 

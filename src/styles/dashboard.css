@@ -7,9 +7,18 @@
 
 .container h2 {
   margin-top: 0;
-  background-color: var(--green);
+  background-color: var(--theme-colour);
   color: white;
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
   font-weight: 100;
+}
+
+.chart-legend {
+  font-size: 1.5rem;
+  padding-bottom: 3rem;
+}
+
+.chart-legend span {
+  padding-left: 2rem;
 }

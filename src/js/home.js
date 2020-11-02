@@ -98,7 +98,10 @@ const populateList = (date, taskList, initialRun) => {
   taskList.forEach((item) => {
     taskHtml += `<div class="task-item">
                   <p class="task"> ${item.task} </p> 
-                  <p class="project"> ${item.project} </p>
+                  <p class="project ${item.project
+                    .toString()
+                    .toLowerCase()
+                    .replace(" ", "-")}"> ${item.project} </p>
                   <span class="start-time">Start: ${item.start} </span> 
                   <span class="end-time">End: ${item.end} </span>
                 </div>`;
