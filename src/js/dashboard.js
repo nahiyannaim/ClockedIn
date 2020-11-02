@@ -2,10 +2,6 @@ const chartProjectColours = ["#ff0000", "#ff99aa", "#5ac0ff", "#ffa500"];
 
 const subgroups = ["A", "B", "C", "D"];
 
-const printLatest = () => {
-  console.log(localStorage);
-};
-
 const start = () => {
   displayBarChart(getBarChartData());
   displayDonutChart({

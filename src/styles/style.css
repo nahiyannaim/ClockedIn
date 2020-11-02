@@ -83,6 +83,20 @@ li a:hover:not(.active) {
   margin-top: 0;
 }
 
+#task-input {
+}
+#project-input {
+}
+#date-input {
+}
+#start-input {
+}
+#end-input {
+}
+
+.add-entry-btn {
+}
+
 .date {
   background-color: var(--theme-colour);
   color: white;
@@ -128,12 +142,6 @@ li a:hover:not(.active) {
   letter-spacing: 0.1rem;
   float: right;
   color: #6a6a6a;
-}
-
-.start-time {
-}
-
-.end-time {
 }
 
 .remove-entry-btn {
@@ -184,6 +192,10 @@ li a:hover:not(.active) {
 }
 
 @media (max-width: 768px) {
+  .container h1 {
+    font-size: 1.3rem;
+  }
+
   li.brand {
     padding-top: 0.75rem;
     padding-bottom: 0.5rem;
@@ -193,5 +205,16 @@ li a:hover:not(.active) {
     font-size: 1rem;
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
+  }
+  .date {
+    text-align: center;
+    font-size: 1.2rem;
+  }
+  .task-item {
+    font-size: 0.9rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
   }
 }

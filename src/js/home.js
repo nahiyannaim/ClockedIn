@@ -119,10 +119,6 @@ const populateList = (date, taskList, initialRun) => {
   }
 };
 
-const printLatest = () => {
-  console.log(localStorage);
-};
-
 const resetFields = () => {
   document.getElementById("date-input").value = "";
   document.getElementById("task-input").value = "";
