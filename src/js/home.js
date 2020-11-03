@@ -1,5 +1,87 @@
 const ul = document.getElementById("entry-list");
 
+let inputValTask = document.getElementById("task-input").value;
+let inputValProject = document.getElementById("project-input").value;
+let inputValDate = document.getElementById("date-input").value;
+let inputValStart = "";
+let inputValEnd = "";
+let sec = 0;
+let min = 0;
+let hour = 0;
+let firstRun = true;
+
+const displayElapsedTime = () => {
+  if (firstRun) {
+    inputValStart = getCurrTimestamp();
+    document.getElementById("start-btn").style.display = "none";
+    document.getElementById("stop-btn").style.display = "inline-block";
+    document.getElementById("elapsed-time").style.display = "inline-block";
+    firstRun = false;
+  }
+  sec++;
+
+  if (sec === 60) {
+    sec = 0;
+    min++;
+  }
+  if (min === 60) {
+    min = 0;
+    hour++;
+  }
+  document.getElementById("elapsed-time").innerHTML = `${
+    hour < 10 ? "0" + hour : hour
+  }:${min < 10 ? "0" + min : min}:${sec < 10 ? "0" + sec : sec}`;
+};
+
+const stop = (timer) => {
+  if (timer) {
+    inputValEnd = getCurrTimestamp();
+    inputValTask = document.getElementById("task-input").value;
+    inputValProject = document.getElementById("project-input").value;
+    inputValDate = document.getElementById("date-input").value;
+
+    if (inputValDate && inputValTask && inputValProject) {
+      clearInterval(timer);
+      firstRun = true;
+      addEntry();
+      sec = 0;
+      min = 0;
+      hour = 0;
+      document.getElementById("start-btn").style.display = "inline-block";
+      document.getElementById("stop-btn").style.display = "none";
+      document.getElementById("elapsed-time").style.display = "none";
+    } else {
+      displayModal();
+    }
+  } else {
+    displayModal();
+  }
+};
+
+const displayModal = () => {
+  const modal = document.getElementById("alert-modal");
+  const span = document.getElementById("modal-close");
+
+  modal.style.display = "block";
+
+  // Close the modal when clicked on X
+  span.onclick = function () {
+    modal.style.display = "none";
+  };
+
+  // Close the modal when user clicks outside the modal
+  window.onclick = function (event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  };
+};
+
+const getCurrTimestamp = () => {
+  let time = new Date();
+  return time.getHours() + ":" + time.getMinutes();
+};
+
 const start = () => {
   // Retrieve initial state of entry list from storage and display it
   Object.entries(localStorage).forEach((entry) => {
@@ -30,57 +112,26 @@ const removeFromStorage = (date) => {
 
 // Add a new entry on click
 const addEntry = () => {
-  let inputValDate = document.getElementById("date-input").value;
-  const inputValTask = document.getElementById("task-input").value;
-  const inputValProject = document.getElementById("project-input").value;
-  const inputValStart = document.getElementById("start-input").value;
-  const inputValEnd = document.getElementById("end-input").value;
+  inputValDate = convertDate(inputValDate);
+  let taskList = [];
+  let item = localStorage.getItem(inputValDate);
 
-  if (
-    inputValDate &&
-    inputValTask &&
-    inputValProject &&
-    inputValStart &&
-    inputValEnd
-  ) {
-    inputValDate = convertDate(inputValDate);
-    let taskList = [];
-    let item = localStorage.getItem(inputValDate);
-
-    // This date entry already exists so get the curr taskList
-    if (item) {
-      item = JSON.parse(item);
-      taskList = item.taskList;
-    }
-
-    taskList.push({
-      task: inputValTask,
-      project: inputValProject,
-      start: inputValStart,
-      end: inputValEnd,
-    });
-
-    populateList(inputValDate, taskList, false);
-    addToStorage(inputValDate, taskList);
-    resetFields();
-  } else {
-    const modal = document.getElementById("alert-modal");
-    const span = document.getElementById("modal-close");
-
-    modal.style.display = "block";
-
-    // Close the modal when clicked on X
-    span.onclick = function () {
-      modal.style.display = "none";
-    };
-
-    // Close the modal when user clicks outside the modal
-    window.onclick = function (event) {
-      if (event.target == modal) {
-        modal.style.display = "none";
-      }
-    };
+  // This date entry already exists so get the curr taskList
+  if (item) {
+    item = JSON.parse(item);
+    taskList = item.taskList;
   }
+
+  taskList.push({
+    task: inputValTask,
+    project: inputValProject,
+    start: inputValStart,
+    end: inputValEnd,
+  });
+
+  populateList(inputValDate, taskList, false);
+  addToStorage(inputValDate, taskList);
+  resetFields();
 };
 
 // Remove an entry on click
@@ -123,8 +174,8 @@ const resetFields = () => {
   document.getElementById("date-input").value = "";
   document.getElementById("task-input").value = "";
   document.getElementById("project-input").value = "";
-  document.getElementById("start-input").value = "";
-  document.getElementById("end-input").value = "";
+  inputValStart = "";
+  inputValEnd = "";
 };
 
 const convertDate = (date) => {
