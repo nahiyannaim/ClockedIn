@@ -89,12 +89,6 @@ label {
   color: var(--grey-dark);
 }
 
-#elapsed-time {
-  padding-left: 1rem;
-  color: red;
-  font-size: 1.2rem;
-}
-
 #task-input {
   display: block;
   font-size: 1.5rem;
@@ -134,13 +128,29 @@ label {
   cursor: pointer;
 }
 
-#stop-btn {
-  display: none;
-  background-color: #bd0000;
+#start-input {
+  margin: 0 auto;
+  text-align: center;
+  font-size: 1rem;
+  padding: 0.5rem;
+  border: 0.1rem solid var(--grey-light);
+  color: var(--grey-dark);
+  outline: none;
+  cursor: pointer;
 }
 
-.timer-btn {
-  text-transform: uppercase;
+#end-input {
+  margin: 0 auto;
+  text-align: center;
+  font-size: 1rem;
+  padding: 0.5rem;
+  border: 0.1rem solid var(--grey-light);
+  color: var(--grey-dark);
+  outline: none;
+  cursor: pointer;
+}
+
+.add-entry-btn {
   margin: 0 auto;
   padding-top: 0.5rem;
   padding-right: 1rem;
@@ -270,8 +280,7 @@ label {
     padding-bottom: 0.5rem;
   }
 
-  label,
-  #elapsed-time {
+  label {
     font-size: 0.9rem;
   }
 
@@ -299,7 +308,23 @@ label {
     width: 15rem;
   }
 
-  .timer-btn {
+  #start-input {
+    display: block;
+    margin-bottom: 1rem;
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    width: 15rem;
+  }
+
+  #end-input {
+    display: block;
+    margin-bottom: 1rem;
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    width: 15rem;
+  }
+
+  .add-entry-btn {
     font-size: 0.9rem;
     margin-top: 0.5rem;
   }

@@ -35,26 +35,20 @@
       <label>Date:</label>
       <input type="date" id="date-input" placeholder="Date" />
 
+      <label>Start:</label>
+      <input type="time" id="start-input" />
+
+      <label>End:</label>
+      <input type="time" id="end-input" />
+
+      <button onclick="addEntry()" class="add-entry-btn">Add Entry</button>
+
       <div id="alert-modal" class="modal">
         <div class="modal-content">
           <span id="modal-close" class="close">&times;</span>
           <p>Please fill out all input fields.</p>
         </div>
       </div>
-
-      <span id="elapsed-time"></span>
-
-      <button
-        id="start-btn"
-        class="timer-btn"
-        onClick="timer = setInterval(displayElapsedTime, 1000)"
-      >
-        Start
-      </button>
-
-      <button id="stop-btn" class="timer-btn" onClick="stop(timer)">
-        Stop
-      </button>
 
       <ul id="entry-list"></ul>
     </div>
